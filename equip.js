@@ -7,20 +7,24 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
     url = Utils.getWebText("https://lostark.game.onstove.com/Profile/Character/" + char[1]);
     url = url.toLowerCase();
 
-    var island = url.split('"equip"')[1];
-    island = island.split('"skill"')[0];
+    var island = url.split('"equip": {')[1];
+    island = island.split('무작위 각인 효과')[0];
 
     equip_group = ['무기', '', '머리', '', '상의', '', '하의', '', '장갑', '', '어깨', ''];
     var i = 0;
     var j = 0;
 
-    for (i; i < 6 ; i++) {
+    while (i < 6) {
         equip_name_start = island.indexOf('"value": "<p align=');
-        island = island.substr(equip_name_start + 51);
+        island = island.substr(equip_name_start + 50);
         equip_name_end = island.indexOf('</font>');
         equip_name = island.substr(0, equip_name_end);
+        if (equip_name.substr(0, 1) != '+') {
+          continue;
+        }
         equip_group[j + 1] = equip_name;
         j = j + 2;
+        i = i + 1;
     }
 
     var k = 0;
