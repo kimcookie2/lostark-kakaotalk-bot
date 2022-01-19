@@ -16,7 +16,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
     url = Utils.getWebText("https://loawa.com/char/" + char[1]);
     url = url.toLowerCase();
 
-    var island = url.split('생활별 세계수의 잎')[1];
+    var island = url.split('생활별 세계수의잎')[1];
     island = island.split('획득한 세계수')[0];
 
     leaf_group = new Array();
@@ -24,17 +24,17 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
     var j = 0;
     var number;
 
-    while (island.indexOf('-1 text-orange">') != -1) {
+    while (island.indexOf('"lang-ko">') != -1) {
 
-      leaf_name_start = island.indexOf('-1 text-orange">');
-      island = island.substr(leaf_name_start + 16);
-      leaf_name_end = island.indexOf('&nbsp;');
+      leaf_name_start = island.indexOf('"lang-ko">');
+      island = island.substr(leaf_name_start + 10);
+      leaf_name_end = island.indexOf('</span>');
       leaf_name = island.substr(0, leaf_name_end);
             
 
-      number_start = island.indexOf('"col-6 p-0">');
-      island = island.substr(number_start + 12);
-      number_end = island.indexOf('</div>');
+      number_start = island.indexOf('"lang-ko">');
+      island = island.substr(number_start + 10);
+      number_end = island.indexOf('</span>');
       number = island.substr(0, number_end);
       number = number.replace('<span class="text-theme-4">0</span>', '');
       number = number.replace('<span class="text-theme-4">0</span>', '');           
