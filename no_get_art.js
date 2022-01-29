@@ -18,22 +18,22 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
     url = Utils.getWebText("https://loawa.com/char/" + char[1]);
     url = url.toLowerCase();
 
-    var island = url.split('획득하지 못한 위대한 미술품')[1];
-    island = island.split('모코코 씨앗 보상 닫기')[0];
+    var island = url.split('획득하지 못한 위대한미술품')[1];
+    island = island.split('모코코씨앗 보상 닫기')[0];
 
     art_group = new Array();
     var i = 0;
     var j = 0;
 
-    while (island.indexOf('"letter-spacing:-1px;">') != -1) {
+    while (island.indexOf('"lang-ko">') != -1) {
 
-      art_name_start = island.indexOf('"letter-spacing:-1px;">');
-      island = island.substr(art_name_start + 23);
-      art_name_end = island.indexOf(' </span');
+      art_name_start = island.indexOf('"lang-ko">');
+      island = island.substr(art_name_start + 10);
+      art_name_end = island.indexOf('</span');
       art_name = island.substr(0, art_name_end);
 
-      method_start = island.indexOf('block" style="letter-spacing:-1.5px;">');
-      island = island.substr(method_start + 38);
+      method_start = island.indexOf('"lang-ko">');
+      island = island.substr(method_start + 10);
       method_end = island.indexOf('</span');
       method = island.substr(0, method_end);
       method = method.split('<br>');

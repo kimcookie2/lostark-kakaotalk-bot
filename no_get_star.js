@@ -18,22 +18,22 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
     url = Utils.getWebText("https://loawa.com/char/" + char[1]);
     url = url.toLowerCase();
 
-    var island = url.split('획득하지 못한 오르페우스의 별')[1];
+    var island = url.split('획득하지 못한 오르페우스의별')[1];
     island = island.split('거인의')[0];
 
     star_group = new Array();
     var i = 0;
     var j = 0;
 
-    while (island.indexOf('"letter-spacing:-1px;">') != -1) {
+    while (island.indexOf('"lang-ko">') != -1) {
 
-      star_name_start = island.indexOf('"letter-spacing:-1px;">');
-      island = island.substr(star_name_start + 23);
+      star_name_start = island.indexOf('"lang-ko">');
+      island = island.substr(star_name_start + 10);
       star_name_end = island.indexOf(' </span');
       star_name = island.substr(0, star_name_end);
 
-      method_start = island.indexOf('block" style="letter-spacing:-1.5px;">');
-      island = island.substr(method_start + 38);
+      method_start = island.indexOf('"lang-ko">');
+      island = island.substr(method_start + 10);
       method_end = island.indexOf('</span');
       method = island.substr(0, method_end);
       method = method.split('<br>');
@@ -56,7 +56,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
       l = l + 2;
     }
         
-    replier.reply(별);
+    replier.reply(star);
 
   }
 
