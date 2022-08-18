@@ -31,6 +31,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
       island_name_start = island.indexOf('"lang-ko">');
       island = island.substr(island_name_start + 10);
       island_name_end = island.indexOf(' </span');
+      island_name_end = island.indexOf('</span');
       island_name = island.substr(0, island_name_end);
 
       method_start = island.indexOf('"lang-ko">');

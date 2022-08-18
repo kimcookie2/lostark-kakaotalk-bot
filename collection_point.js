@@ -17,43 +17,43 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
   if (msg.indexOf('!수집 ') != -1) {
     var char = msg.split(' ');
 
-    url = Utils.getWebText("https://loawa.com/char/" + char[1]);
+    url = Utils.getWebText("https://www.mgx.kr/lostark/character/?character_name=" + char[1]);
     url = url.toLowerCase();
 
     var island = url.split('수집형 포인트')[1];
 
     // 섬의 마음
-    island_heart_start = island.indexOf('collect_00.png" alt="">');
-    island = island.substr(island_heart_start + 89);
-    island_heart_end = island.indexOf('</dd>');
+    island_heart_start = island.indexOf('point_number">');
+    island = island.substr(island_heart_start + 14);
+    island_heart_end = island.indexOf('</div>');
     island_heart = island.substr(0, island_heart_end);
     island_heart = island_heart.trim();
 
     // 오르페우스의 별
-    star_start = island.indexOf('collect_01.png" alt="">');
-    island = island.substr(star_start + 89);
-    star_end = island.indexOf('</dd>');
+    star_start = island.indexOf('point_number">');
+    island = island.substr(star_start + 14);
+    star_end = island.indexOf('</div>');
     star = island.substr(0, star_end);
     star = star.trim();
 
     // 거인의 심장
-    gient_heart_start = island.indexOf('collect_02.png" alt="">');
-    island = island.substr(gient_heart_start + 89);
-    gient_heart_end = island.indexOf('</dd>');
+    gient_heart_start = island.indexOf('point_number">');
+    island = island.substr(gient_heart_start + 14);
+    gient_heart_end = island.indexOf('</div>');
     gient_heart = island.substr(0, gient_heart_end);
     gient_heart = gient_heart.trim();
     
     // 위대한 미술품
-    art_start = island.indexOf('collect_03.png" alt="">');
-    island = island.substr(art_start + 89);
-    art_end = island.indexOf('</dd>');
+    art_start = island.indexOf('point_number">');
+    island = island.substr(art_start + 14);
+    art_end = island.indexOf('</div>');
     art = island.substr(0, art_end);
     art = art.trim();
 
     // 모코코 씨앗
-    mococo_start = island.indexOf('collect_04.png" alt="">');
-    island = island.substr(mococo_start + 89);
-    mococo_end = island.indexOf('</dd>');
+    mococo_start = island.indexOf('point_number">');
+    island = island.substr(mococo_start + 14);
+    mococo_end = island.indexOf('</div>');
     mococo = island.substr(0, mococo_end);
     mococo = mococo.trim();
     if (mococo.length == 4) {
@@ -62,33 +62,33 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
 
 
     // 모험물
-    adventure_start = island.indexOf('collect_05.png" alt="">');
-    island = island.substr(adventure_start + 89);
-    adventure_end = island.indexOf('</dd>');
+    adventure_start = island.indexOf('point_number">');
+    island = island.substr(adventure_start + 14);
+    adventure_end = island.indexOf('</div>');
     adventure = island.substr(0, adventure_end);
     adventure = adventure.trim();
 
     // 이그네아의 징표
-    ignea_start = island.indexOf('collect_06.png" alt="">');
-    island = island.substr(ignea_start + 89);
-    ignea_end = island.indexOf('</dd>');
+    ignea_start = island.indexOf('point_number">');
+    island = island.substr(ignea_start + 14);
+    ignea_end = island.indexOf('</div>');
     ignea = island.substr(0, ignea_end);
     ignea = ignea.trim();
 
     // 세계수의 잎
-    world_tree_start = island.indexOf('collect_07.png" alt="">');
-    island = island.substr(world_tree_start + 89);
-    world_tree_end = island.indexOf('</dd>');
+    world_tree_start = island.indexOf('point_number">');
+    island = island.substr(world_tree_start + 14);
+    world_tree_end = island.indexOf('</div>');
     world_tree = island.substr(0, world_tree_end);
     world_tree = world_tree.trim();
-
+    
     replier.reply('[' + char[1] + '님의 수집형 포인트]' + 
       '\n섬의 마음 : ' + island_heart + 
       ' / 95\n오르페우스의 별 : ' + star + 
       ' / 8\n거인의 심장 : ' + gient_heart + 
       ' / 15\n위대한 미술품 : ' + art + 
       ' / 56\n모코코 씨앗 : ' + mococo + 
-      ' / 1,268\n항해 모험물 : ' + adventure + 
+      ' / 1,304\n항해 모험물 : ' + adventure + 
       ' / 47\n이그네아의 징표 : ' + ignea + 
       ' / 15\n세계수의 잎 : ' + world_tree + ' / 67'
       );
